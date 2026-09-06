@@ -65,6 +65,38 @@ de design com um time sênior.
 - TST.2 — Testcontainers vs H2 in-memory em testes de integração
 - TST.3 — Mock vs Stub vs Fake: quando usar cada test double
 
+### [08 — Configuração e Externalização](techpills/08-configuracao-e-externalizacao.md)
+- CFG.1 — `@ConfigurationProperties` tipado vs `@Value` espalhado
+- CFG.2 — Segredos: cofre de segredos vs variável de ambiente vs valor no `application.yml`
+- CFG.3 — Perfis (`@Profile`) vs feature flag em runtime
+
+### [09 — Observabilidade e Logging](techpills/09-observabilidade-e-logging.md)
+- OBS.1 — SLF4J facade vs acoplar Logback/Log4j2 diretamente em biblioteca
+- OBS.2 — Log estruturado (JSON/MDC) vs texto livre
+- OBS.3 — Métricas (RED/USE) vs inferir saúde do sistema só pelo log
+- OBS.4 — Health checks: liveness vs readiness
+
+### [10 — Persistência e Banco de Dados](techpills/10-persistencia-e-banco-de-dados.md)
+- DB.1 — Versionamento de schema: Flyway/Liquibase vs `ddl-auto: update`
+- DB.2 — N+1 queries: lazy padrão vs `JOIN FETCH`/`@EntityGraph`
+- DB.3 — Paginação: offset vs keyset/cursor
+- DB.4 — Connection pool sizing (HikariCP): quantas conexões?
+
+### [11 — Transações e Consistência](techpills/11-transacoes-e-consistencia.md)
+- TRX.1 — `@Transactional`: escopo e propagation (`REQUIRED` vs `REQUIRES_NEW`)
+- TRX.2 — Transação distribuída (2PC) vs padrão Outbox/Saga
+- TRX.3 — Transaction script "gordo" vs escopo transacional estreito
+
+### [12 — Comunicação entre Serviços](techpills/12-comunicacao-entre-servicos.md)
+- COM.1 — Síncrono (REST/gRPC) vs assíncrono (mensageria) entre serviços
+- COM.2 — Idempotência em endpoints não naturalmente idempotentes
+- COM.3 — Resiliência: timeout + circuit breaker vs chamada "nua" a serviço externo
+
+### [13 — Segurança de Aplicação](techpills/13-seguranca-de-aplicacao.md)
+- SEC.1 — Hash de senha: BCrypt/Argon2 vs SHA/MD5
+- SEC.2 — JWT stateless vs sessão de servidor
+- SEC.3 — Autorização: checagem espalhada nos controllers vs política centralizada
+
 ---
 
 Contribuições: ao adicionar uma pill nova, siga o template acima e garanta
