@@ -98,6 +98,18 @@ de design com um time sênior.
 - SEC.2 — JWT stateless vs sessão de servidor
 - SEC.3 — Autorização: checagem espalhada nos controllers vs política centralizada
 
+### [14 — Patterns Importantes para Aplicações](techpills/14-patterns-para-aplicacoes.md)
+- APP.1 — Strategy vs `if`/`switch` encadeado para variações de regra de negócio
+- APP.2 — Chain of Responsibility para pipelines vs método monolítico com validações em sequência
+- APP.3 — Domain Events (Observer) vs acoplamento direto entre casos de uso
+- APP.4 — Application Service (Facade) vs lógica de negócio dentro do Controller
+
+### [15 — Patterns Importantes para Componentes Reutilizáveis](techpills/15-patterns-para-componentes-reutilizaveis.md)
+- LIB.1 — Extensibilidade: Template Method (herança) vs Strategy/SPI (composição)
+- LIB.2 — Auto-configuração condicional vs beans fixos que o consumidor não consegue sobrescrever
+- LIB.3 — Superfície pública mínima vs expor tudo como `public` "para não ter que pensar"
+- LIB.4 — Fail-fast na inicialização vs falha silenciosa/tardia em biblioteca
+
 ---
 
 Contribuições: ao adicionar uma pill nova, siga o template acima e garanta
