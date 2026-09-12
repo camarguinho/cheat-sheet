@@ -199,3 +199,124 @@ pod. Readiness responde "consigo atender tráfego agora?" — falha aqui só tir
 o pod da rotação de load balancing sem reiniciá-lo, porque a causa raiz
 (dependência externa fora do ar) não se resolve reiniciando a própria
 aplicação.
+
+---
+
+## OBS.5 — Nível de log único (root) vs loggers segmentados por pacote/módulo em produção
+
+**❓ A decisão:** para investigar um incidente, você sobe o nível de log
+**global** (root logger) para `DEBUG`/`TRACE`, ou já tem loggers segmentados
+por pacote/módulo de forma que dá pra elevar o nível de **um grupo
+específico**, sem afetar o restante da aplicação?
+
+### 🔀 Antipadrão — um único nível de log para a aplicação inteira
+
+```xml
+<!-- logback.xml -->
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder><pattern>%d %-5level [%thread] %logger{36} - %msg%n</pattern></encoder>
+    </appender>
+
+    <!-- único nível para TODO o classpath -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+```
+
+❌ Ao subir o `root` para `DEBUG`/`TRACE` para rastrear a causa de **um**
+incidente pontual (ex.: um bug no fluxo de checkout), você liga verbosidade
+máxima em **todas as camadas**: Hibernate loga cada SQL com binding de
+parâmetro, o client HTTP loga corpo de request/response inteiro, o
+Spring loga resolução de bean e matching de rota — nada disso tem relação
+com o incidente, mas o volume de log explode em conjunto.
+
+Em Kubernetes isso é particularmente perigoso porque o volume extra de log
+não fica "de graça": cada linha aloca `String`/`byte[]`, passa por
+formatação, é enfileirada num appender e, na maioria das stacks, é
+capturada por um *log shipper* (Fluent Bit/Filebeat como sidecar, ou o
+próprio runtime do container lendo stdout). Se o appender é assíncrono
+(`AsyncAppender`/`logstash-logback-encoder`) e a fila cresce mais rápido do
+que o destino consegue drenar — disco lento, sidecar sobrecarregado, rede
+lenta até o coletor — essa fila em memória cresce dentro do **mesmo limite
+de memória do container**. O resultado é o pod sendo `OOMKilled` bem no
+meio do incidente que você estava tentando diagnosticar, aumentando o
+tempo de indisponibilidade em vez de reduzir.
+
+### 🔀 Correto — loggers hierárquicos por pacote, ajustáveis em runtime
+
+```xml
+<!-- logback.xml: root fica conservador, grupos específicos são ajustáveis -->
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder><pattern>%d %-5level [%thread] %logger{36} - %msg%n</pattern></encoder>
+    </appender>
+
+    <!-- appender assíncrono com fila LIMITADA e política de descarte —
+         nunca deixa o volume de log crescer sem limite dentro do container -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <discardingThreshold>20</discardingThreshold> <!-- descarta TRACE/DEBUG sob pressão -->
+        <neverBlock>true</neverBlock> <!-- nunca bloqueia a thread de negócio esperando a fila -->
+        <includeCallerData>false</includeCallerData> <!-- caller data é caro; NUNCA ligar em TRACE -->
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <root level="WARN">
+        <appender-ref ref="ASYNC"/>
+    </root>
+
+    <!-- grupos por domínio/módulo — cada um pode ser elevado isoladamente -->
+    <logger name="com.empresa.checkout" level="INFO"/>
+    <logger name="com.empresa.pagamentos" level="INFO"/>
+    <logger name="org.hibernate.SQL" level="WARN"/>
+    <logger name="org.springframework.web" level="WARN"/>
+</configuration>
+```
+
+Com o Spring Boot Actuator, esses loggers viram ajustáveis **em runtime**,
+sem redeploy e sem reiniciar o pod:
+
+```bash
+# eleva SÓ o pacote suspeito, sem tocar no resto da aplicação
+curl -X POST localhost:8080/actuator/loggers/com.empresa.checkout \
+     -H 'Content-Type: application/json' -d '{"configuredLevel": "DEBUG"}'
+
+# fundamental: reverter assim que o diagnóstico terminar
+curl -X POST localhost:8080/actuator/loggers/com.empresa.checkout \
+     -H 'Content-Type: application/json' -d '{"configuredLevel": null}'
+```
+
+Para não depender de alguém lembrar de reverter manualmente, agende a
+reversão junto com a elevação (job assíncrono, `ScheduledExecutorService`
+com `TimeUnit.MINUTES`, ou automação externa que chama o endpoint de
+reversão depois de N minutos) — nível de log elevado é uma condição
+temporária de diagnóstico, não um novo estado permanente.
+
+Quando o problema é **uma requisição/cliente específico** dentro de um
+volume grande de tráfego, prefira nem elevar o pacote inteiro: propague o
+`traceId` (ou um cabeçalho de "modo diagnóstico") via MDC e use um
+`TurboFilter` que só libera `DEBUG`/`TRACE` quando aquele valor de MDC
+bate — assim a verbosidade extra fica restrita à requisição investigada,
+sem aumentar volume para o restante do tráfego que passa pelo mesmo
+pacote.
+
+### ✅ Veredito
+
+Nunca controle log de produção por um único nível global. Estruture os
+loggers por pacote/módulo (por domínio de negócio, não só por biblioteca
+de terceiros) desde o início, com o `root` num nível conservador
+(`WARN`/`INFO`) — assim, quando um incidente exigir mais detalhe, você
+eleva **só o grupo suspeito**, e o aumento de volume fica restrito à parte
+da aplicação que de fato importa para aquela investigação. Combine isso
+com três proteções contra OOM em containers: (1) appender assíncrono com
+fila **limitada** e `discardingThreshold`/`neverBlock`, para que um pico
+de log jamais vire pressão de memória ilimitada dentro do limite do pod;
+(2) `includeCallerData` desligado, já que captura de stack trace por
+linha de log é cara e fica ainda mais cara com `TRACE` ligado; (3) reversão
+automática/agendada do nível elevado, para que "ligamos TRACE durante o
+incidente" não vire "esquecemos TRACE ligado por semanas". Só use elevação
+de nível ampla (múltiplos pacotes, ou o `root`) como último recurso, e
+mesmo assim por tempo estritamente controlado — o padrão é sempre o grupo
+mais estreito que ainda resolve a pergunta que motivou a investigação.

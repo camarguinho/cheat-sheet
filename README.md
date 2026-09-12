@@ -75,6 +75,7 @@ de design com um time sênior.
 - OBS.2 — Log estruturado (JSON/MDC) vs texto livre
 - OBS.3 — Métricas (RED/USE) vs inferir saúde do sistema só pelo log
 - OBS.4 — Health checks: liveness vs readiness
+- OBS.5 — Nível de log único (root) vs loggers segmentados por pacote/módulo em produção
 
 ### [10 — Persistência e Banco de Dados](techpills/10-persistencia-e-banco-de-dados.md)
 - DB.1 — Versionamento de schema: Flyway/Liquibase vs `ddl-auto: update`
