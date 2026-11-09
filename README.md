@@ -112,6 +112,16 @@ de design com um time sênior.
 
 ---
 
+## 🧪 Projetos de referência
+
+### [spring-exceptions-reference](spring-exceptions-reference/README.md)
+Projeto Java 21 / Spring Boot 4 / Maven sobre **exceções, error codes e HTTP status**, com um
+[ebook em 11 capítulos](spring-exceptions-reference/docs/README.md): fundamentos de exceções em Java,
+hierarquia de exceções da aplicação, catálogo de error codes, guia de HTTP status, `@RestControllerAdvice`
+com Problem Details (RFC 9457), validação, integrações/transações/async, logging e testes de contrato.
+
+---
+
 Contribuições: ao adicionar uma pill nova, siga o template acima e garanta
 que o veredito responde explicitamente **"quando isso NÃO se aplica"** —
 uma recomendação sem exceções documentadas normalmente significa que ela

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: spring-exceptions-reference
+  mvc:
+    # Já temos um @RestControllerAdvice que estende ResponseEntityExceptionHandler.
+    # Ligar isto registraria um segundo handler (o padrão do Boot) — desnecessário aqui.
+    problemdetails:
+      enabled: false
+
+server:
+  error:
+    # Para respostas do BasicErrorController (/error): nunca exponha detalhes internos.
+    include-message: never
+    include-stacktrace: never
+    include-exception: false
+    include-binding-errors: never
+
+app:
+  errors:
+    type-base-uri: /errors/
+
+logging:
+  pattern:
+    # correlationId em toda linha de log
+    level: "%5p [%X{correlationId:-}]"
+  level:
+    dev.cheatsheet.exceptions: INFO
