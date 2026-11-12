@@ -1,6 +1,8 @@
 # 🧊 Imutabilidade e Objetos de Valor
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🚨 Tratamento de Erros](02-tratamento-de-erros.md) | [↑ Índice](../README.md) | [Próximo: 📐 Design de API e Contratos →](04-design-de-api-e-contratos.md)
+<!-- nav:end -->
 
 ---
 
@@ -307,3 +309,9 @@ seguro que copiar a cada chamada do getter. Reserve
 interno é intencionalmente mutável ao longo da vida do objeto e você só quer
 impedir que o **caller externo** mute — mas documente que é uma view viva,
 não uma foto congelada.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🚨 Tratamento de Erros](02-tratamento-de-erros.md) | [↑ Índice](../README.md) | [Próximo: 📐 Design de API e Contratos →](04-design-de-api-e-contratos.md)
+<!-- nav:end -->

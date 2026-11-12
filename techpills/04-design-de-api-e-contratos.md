@@ -1,6 +1,8 @@
 # 📐 Design de API e Contratos
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🧊 Imutabilidade e Objetos de Valor](03-imutabilidade-e-objetos-de-valor.md) | [↑ Índice](../README.md) | [Próximo: ⚡ Concorrência →](05-concorrencia.md)
+<!-- nav:end -->
 
 ---
 
@@ -223,3 +225,9 @@ negócio é o próprio construtor/factory do objeto de domínio, porque ele
 precisa proteger a regra **independentemente do ponto de entrada**. Se você
 só validar no DTO, todo novo ponto de entrada (uma fila nova, um job batch
 novo) reintroduz o risco de estado inválido.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🧊 Imutabilidade e Objetos de Valor](03-imutabilidade-e-objetos-de-valor.md) | [↑ Índice](../README.md) | [Próximo: ⚡ Concorrência →](05-concorrencia.md)
+<!-- nav:end -->

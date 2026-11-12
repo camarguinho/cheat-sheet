@@ -1,6 +1,8 @@
 # 🧪 Testes
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🏗️ Arquitetura e Fronteiras](06-arquitetura-e-fronteiras.md) | [↑ Índice](../README.md) | [Próximo: ⚙️ Configuração e Externalização →](08-configuracao-e-externalizacao.md)
+<!-- nav:end -->
 
 ---
 
@@ -213,3 +215,9 @@ para repositórios e gateways simples, um Fake in-memory costuma valer mais
 que dezenas de `when(...).thenReturn(...)` espalhados pela suíte. Por
 padrão, prefira Stub/Fake; reserve Mock+`verify` para o caso específico em
 que não existe outro jeito de observar que a ação aconteceu.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🏗️ Arquitetura e Fronteiras](06-arquitetura-e-fronteiras.md) | [↑ Índice](../README.md) | [Próximo: ⚙️ Configuração e Externalização →](08-configuracao-e-externalizacao.md)
+<!-- nav:end -->

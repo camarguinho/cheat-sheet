@@ -1,6 +1,8 @@
 # 🚨 Tratamento de Erros
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 💉 Injeção de Dependência](01-injecao-de-dependencia.md) | [↑ Índice](../README.md) | [Próximo: 🧊 Imutabilidade e Objetos de Valor →](03-imutabilidade-e-objetos-de-valor.md)
+<!-- nav:end -->
 
 ---
 
@@ -246,3 +248,9 @@ original** — nunca capture e relance sem passar a exceção original como
 incidente numa adivinhação. Não empacote indiscriminadamente dentro da mesma
 camada/módulo só por hábito — isso só adiciona ruído sem ganho de
 encapsulamento.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 💉 Injeção de Dependência](01-injecao-de-dependencia.md) | [↑ Índice](../README.md) | [Próximo: 🧊 Imutabilidade e Objetos de Valor →](03-imutabilidade-e-objetos-de-valor.md)
+<!-- nav:end -->

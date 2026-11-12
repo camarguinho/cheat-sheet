@@ -1,6 +1,8 @@
 # 🔁 Transações e Consistência
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🗄️ Persistência e Banco de Dados](10-persistencia-e-banco-de-dados.md) | [↑ Índice](../README.md) | [Próximo: 📨 Comunicação entre Serviços →](12-comunicacao-entre-servicos.md)
+<!-- nav:end -->
 
 ---
 
@@ -156,3 +158,9 @@ pool pela duração inteira da chamada externa, que é ordens de magnitude mais
 lenta e mais instável que qualquer operação local de banco — uma das causas
 mais comuns e mais evitáveis de esgotamento de connection pool sob carga (ver
 [DB.4](10-persistencia-e-banco-de-dados.md#db4--connection-pool-sizing-hikaricp-quantas-conexões)).
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🗄️ Persistência e Banco de Dados](10-persistencia-e-banco-de-dados.md) | [↑ Índice](../README.md) | [Próximo: 📨 Comunicação entre Serviços →](12-comunicacao-entre-servicos.md)
+<!-- nav:end -->

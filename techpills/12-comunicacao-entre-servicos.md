@@ -1,6 +1,8 @@
 # 📨 Comunicação entre Serviços
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🔁 Transações e Consistência](11-transacoes-e-consistencia.md) | [↑ Índice](../README.md) | [Próximo: 🔐 Segurança de Aplicação →](13-seguranca-de-aplicacao.md)
+<!-- nav:end -->
 
 ---
 
@@ -176,3 +178,9 @@ com um fallback **definido explicitamente** (mesmo que o fallback seja
 "degradar com dado parcial ou cache antigo") — isso contém a falha na
 fronteira do serviço em vez de deixá-la se propagar em cascata pelo resto do
 sistema.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🔁 Transações e Consistência](11-transacoes-e-consistencia.md) | [↑ Índice](../README.md) | [Próximo: 🔐 Segurança de Aplicação →](13-seguranca-de-aplicacao.md)
+<!-- nav:end -->
