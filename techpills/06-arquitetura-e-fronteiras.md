@@ -1,6 +1,8 @@
 # 🏗️ Arquitetura e Fronteiras
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: ⚡ Concorrência](05-concorrencia.md) | [↑ Índice](../README.md) | [Próximo: 🧪 Testes →](07-testes.md)
+<!-- nav:end -->
 
 ---
 
@@ -192,3 +194,9 @@ tipo. Se o build já rejeita o ciclo (a maioria das ferramentas Maven/Gradle
 com módulos multi-projeto rejeita ciclo em tempo de build), trate isso como
 sinal correto de design quebrado — nunca como obstáculo de ferramenta a ser
 contornado.
+
+---
+
+<!-- nav:start -->
+[← Anterior: ⚡ Concorrência](05-concorrencia.md) | [↑ Índice](../README.md) | [Próximo: 🧪 Testes →](07-testes.md)
+<!-- nav:end -->

@@ -1,6 +1,8 @@
 # 🧩 Patterns Importantes para Aplicações
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🔐 Segurança de Aplicação](13-seguranca-de-aplicacao.md) | [↑ Índice](../README.md) | [Próximo: 📦 Patterns Importantes para Componentes Reutilizáveis →](15-patterns-para-componentes-reutilizaveis.md)
+<!-- nav:end -->
 
 ---
 
@@ -277,3 +279,9 @@ faz parsing de request, delega, mapeia resultado para response. Isso paga
 dividendos assim que o mesmo caso de uso precisa ser acionado por mais de um
 gatilho, e torna o teste da regra de negócio independente de infraestrutura
 HTTP.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🔐 Segurança de Aplicação](13-seguranca-de-aplicacao.md) | [↑ Índice](../README.md) | [Próximo: 📦 Patterns Importantes para Componentes Reutilizáveis →](15-patterns-para-componentes-reutilizaveis.md)
+<!-- nav:end -->

@@ -1,6 +1,8 @@
 # ⚙️ Configuração e Externalização
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🧪 Testes](07-testes.md) | [↑ Índice](../README.md) | [Próximo: 📡 Observabilidade e Logging →](09-observabilidade-e-logging.md)
+<!-- nav:end -->
 
 ---
 
@@ -165,3 +167,9 @@ de deploy inteiro. Usar `@Profile` para algo que na verdade precisava ser
 toggleable em runtime é um erro caro: toda vez que o negócio quiser testar ou
 reverter algo, alguém vai precisar de um redeploy — lento e arriscado demais
 para decisão de produto do dia a dia.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🧪 Testes](07-testes.md) | [↑ Índice](../README.md) | [Próximo: 📡 Observabilidade e Logging →](09-observabilidade-e-logging.md)
+<!-- nav:end -->

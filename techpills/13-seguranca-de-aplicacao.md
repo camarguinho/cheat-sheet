@@ -1,6 +1,8 @@
 # 🔐 Segurança de Aplicação
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 📨 Comunicação entre Serviços](12-comunicacao-entre-servicos.md) | [↑ Índice](../README.md) | [Próximo: 🧩 Patterns Importantes para Aplicações →](14-patterns-para-aplicacoes.md)
+<!-- nav:end -->
 
 ---
 
@@ -150,3 +152,9 @@ cada controller. Isso não é só sobre duplicação de código: é sobre superf
 de ataque. Toda checagem de autorização escrita à mão de novo é mais uma
 chance de esquecer, e o resultado típico dessa omissão é exposição de dado de
 outro usuário (IDOR) — uma das falhas mais recorrentes do OWASP Top 10.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 📨 Comunicação entre Serviços](12-comunicacao-entre-servicos.md) | [↑ Índice](../README.md) | [Próximo: 🧩 Patterns Importantes para Aplicações →](14-patterns-para-aplicacoes.md)
+<!-- nav:end -->

@@ -1,6 +1,8 @@
 # 📦 Patterns Importantes para Componentes Reutilizáveis
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 🧩 Patterns Importantes para Aplicações](14-patterns-para-aplicacoes.md) | [↑ Índice](../README.md)
+<!-- nav:end -->
 
 ---
 
@@ -224,3 +226,9 @@ auto-configuração, no boot — e nunca no primeiro uso real. Um erro de
 configuração que derruba a inicialização com uma mensagem clara é
 infinitamente mais barato de corrigir do que uma falha silenciosa ou uma
 exceção genérica descoberta em produção meses depois.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 🧩 Patterns Importantes para Aplicações](14-patterns-para-aplicacoes.md) | [↑ Índice](../README.md)
+<!-- nav:end -->

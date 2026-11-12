@@ -1,6 +1,8 @@
 # ⚡ Concorrência
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 📐 Design de API e Contratos](04-design-de-api-e-contratos.md) | [↑ Índice](../README.md) | [Próximo: 🏗️ Arquitetura e Fronteiras →](06-arquitetura-e-fronteiras.md)
+<!-- nav:end -->
 
 ---
 
@@ -236,3 +238,9 @@ para dado imutável propagado para threads filhas (concorrência estruturada),
 prefira `ScopedValue` (JEP 446) a `ThreadLocal`: é imutável, tem escopo
 automaticamente limitado e não exige limpeza manual — elimina exatamente a
 classe de bug acima por construção.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 📐 Design de API e Contratos](04-design-de-api-e-contratos.md) | [↑ Índice](../README.md) | [Próximo: 🏗️ Arquitetura e Fronteiras →](06-arquitetura-e-fronteiras.md)
+<!-- nav:end -->

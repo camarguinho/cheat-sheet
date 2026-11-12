@@ -1,6 +1,8 @@
 # 📡 Observabilidade e Logging
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: ⚙️ Configuração e Externalização](08-configuracao-e-externalizacao.md) | [↑ Índice](../README.md) | [Próximo: 🗄️ Persistência e Banco de Dados →](10-persistencia-e-banco-de-dados.md)
+<!-- nav:end -->
 
 ---
 
@@ -320,3 +322,9 @@ incidente" não vire "esquecemos TRACE ligado por semanas". Só use elevação
 de nível ampla (múltiplos pacotes, ou o `root`) como último recurso, e
 mesmo assim por tempo estritamente controlado — o padrão é sempre o grupo
 mais estreito que ainda resolve a pergunta que motivou a investigação.
+
+---
+
+<!-- nav:start -->
+[← Anterior: ⚙️ Configuração e Externalização](08-configuracao-e-externalizacao.md) | [↑ Índice](../README.md) | [Próximo: 🗄️ Persistência e Banco de Dados →](10-persistencia-e-banco-de-dados.md)
+<!-- nav:end -->

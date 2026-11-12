@@ -1,6 +1,8 @@
 # 🗄️ Persistência e Banco de Dados
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[← Anterior: 📡 Observabilidade e Logging](09-observabilidade-e-logging.md) | [↑ Índice](../README.md) | [Próximo: 🔁 Transações e Consistência →](11-transacoes-e-consistencia.md)
+<!-- nav:end -->
 
 ---
 
@@ -189,3 +191,9 @@ intuição de "quanto mais, melhor". Em arquiteturas com múltiplas instâncias
 da aplicação, sempre calcule o total (`instâncias × maximum-pool-size`)
 contra o `max_connections` real do banco — é fácil esgotar o banco ao
 escalar a aplicação horizontalmente sem revisar esse número.
+
+---
+
+<!-- nav:start -->
+[← Anterior: 📡 Observabilidade e Logging](09-observabilidade-e-logging.md) | [↑ Índice](../README.md) | [Próximo: 🔁 Transações e Consistência →](11-transacoes-e-consistencia.md)
+<!-- nav:end -->

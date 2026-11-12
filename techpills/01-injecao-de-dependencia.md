@@ -1,6 +1,8 @@
 # 💉 Injeção de Dependência
 
-[← Voltar ao índice](../README.md)
+<!-- nav:start -->
+[↑ Índice](../README.md) | [Próximo: 🚨 Tratamento de Erros →](02-tratamento-de-erros.md)
+<!-- nav:end -->
 
 ---
 
@@ -313,3 +315,9 @@ merece ser quebrada — não que o Service Locator é a saída fácil legítima.
 Reserve o padrão, documentado como dívida técnica explícita, apenas para
 infraestrutura cross-cutting genuinamente difícil de encaixar em DI comum
 (ex.: código estático de bibliotecas legadas que você não controla).
+
+---
+
+<!-- nav:start -->
+[↑ Índice](../README.md) | [Próximo: 🚨 Tratamento de Erros →](02-tratamento-de-erros.md)
+<!-- nav:end -->
